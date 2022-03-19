@@ -1,0 +1,29 @@
+<div class="table-wrapper">
+  <div class="table-wrapper__loading" *ngIf="isLoading">
+    Loading...
+  </div>
+
+  <div class="table-wrapper__error" *ngIf="isError">
+    No users found
+  </div>
+
+  <table class="table-wrapper__table" *ngIf="isOk">
+    <ng-content select="[table-head]"></ng-content>
+
+    <ng-content select="[table-body]"></ng-content>
+  </table>
+
+  <div *ngIf="isOk" class="table-wrapper__pagination">
+    Page:
+    <button
+      *ngFor="let page of pages"
+      class="button table-wrapper__pagination__button"
+      (click)="handlePageChange(page)"
+      [ngClass]="currentPage === page ? 'button--active' : ''"
+    >{{ page }}</button>
+
+    <span class="table-wrapper__pagination__total">
+      Total: {{ total }}
+    </span>
+  </div>
+</div>

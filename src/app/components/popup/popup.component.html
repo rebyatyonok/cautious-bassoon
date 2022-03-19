@@ -1,0 +1,9 @@
+<div class="popup" *ngIf="isOpen">
+  <div class="popup__overlay"></div>
+
+  <div class="popup__content">
+    <button class="popup__close-button button" (click)="handleCloseButtonClick()">X</button>
+
+    <ng-content></ng-content>
+  </div>
+</div>

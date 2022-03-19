@@ -1,0 +1,58 @@
+<h2>Learning plans</h2>
+
+<div class="controls">
+  <app-labeled-input
+    class="controls__search input"
+    [debounce]="true"
+    (valueChange)="handleSearch($event)"
+    placeholder="search for plans"
+  ></app-labeled-input>
+
+  <button
+    class="controls__button button"
+    (click)="isCreateLearningPlanFormOpened = true"
+  >Create new learning plan</button>
+</div>
+
+<app-table-wrapper
+  [isLoading]="isLoading"
+  [isError]="learningPlans.length === 0 && !isLoading"
+  [isOk]="learningPlans.length > 0 && !isLoading"
+  [currentPage]="currentPage"
+  [total]="total"
+  (changePageEvent)="handlePageChange($event)"
+>
+  <thead table-head>
+    <th>Name</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </thead>
+
+  <tbody table-body>
+    <tr *ngFor="let plan of learningPlans">
+      <td>{{ plan.name }}</td>
+      <td>{{ plan.status }}</td>
+      <td>
+        <button class="button" (click)="handlePlanStatusChange(plan)">
+          {{ plan.status === 'active' ? 'Archive' : 'Unarchive' }}
+        </button>
+      </td>
+      <td>
+        <button class="button" (click)="handleAssignmentButtonClick(plan)">
+          Assign
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</app-table-wrapper>
+
+<app-confirmation></app-confirmation>
+
+<app-popup [isOpen]="isCreateLearningPlanFormOpened" (close)="isCreateLearningPlanFormOpened = false">
+  <app-learning-plan-form (submit)="handleLearningPlanCreate($event)"></app-learning-plan-form>
+</app-popup>
+
+<app-popup [isOpen]="isAssignLearningPlanFormOpened" (close)="isAssignLearningPlanFormOpened = false">
+  <app-assign-form (submit)="handleLearningPlanAssign($event)"></app-assign-form>
+</app-popup>

@@ -1,0 +1,8 @@
+<app-popup [isOpen]="isOpened" (close)="close()">
+  <h3 class="text">{{ text }}</h3>
+
+  <div class="actions">
+    <button class="actions__accept button" (click)="confirm()">Yes</button>
+    <button class="actions__deny button" (click)="deny()">No</button>
+  </div>
+</app-popup>

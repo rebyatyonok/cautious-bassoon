@@ -1,4 +1,6 @@
-# AngularDevTestTastMine
+# Angular test project
+
+Description [here](https://gist.github.com/bolelamx/b61919e424b74081a3c2ad3c6852cc41)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 

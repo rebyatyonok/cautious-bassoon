@@ -1,0 +1,37 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0, 50%);
+    z-index: 2;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 3;
+    padding: 10px;
+    background-color: white;
+    min-width: 250px;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 10px;
+    background: transparent;
+    border: none
+  }
+}

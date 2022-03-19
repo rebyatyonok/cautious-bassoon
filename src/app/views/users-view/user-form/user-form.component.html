@@ -1,0 +1,14 @@
+<h3>Create new user</h3>
+
+<form class="form">
+  <app-labeled-input [(value)]="formData.name" placeholder="John" label="Name" class="form__input"></app-labeled-input>
+
+  <app-labeled-input [(value)]="formData.email" placeholder="john_doe@mail.com" label="Email" class="form__input"></app-labeled-input>
+
+  <app-labeled-input [(value)]="formData.avatar" placeholder="https://someimg.jpg" label="Avatar link" class="form__input"></app-labeled-input>
+
+  <div class="form__actions">
+    <button class="form__actions__accept button" (click)="handleSubmitButtonClick($event)" [disabled]="!isFormDataCorrect">Create</button>
+    <button class="form__actions__deny button" (click)="handleCancelButtonClick($event)">Cancel</button>
+  </div>
+</form>

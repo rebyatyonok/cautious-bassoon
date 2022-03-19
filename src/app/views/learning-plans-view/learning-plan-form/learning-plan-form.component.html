@@ -1,0 +1,10 @@
+<h3>Create new learning plan</h3>
+
+<form class="form">
+  <app-labeled-input [(value)]="formData.name" placeholder="Learn how use ladders" label="Name" class="form__input"></app-labeled-input>
+
+  <div class="form__actions">
+    <button class="form__actions__accept button" (click)="handleSubmitButtonClick($event)" [disabled]="!isFormDataCorrect">Create</button>
+    <button class="form__actions__deny button" (click)="handleCancelButtonClick($event)">Cancel</button>
+  </div>
+</form>

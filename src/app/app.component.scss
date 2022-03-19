@@ -1,0 +1,25 @@
+.header {
+  padding: var(--space);
+  margin-bottom: var(--space);
+  border-bottom: 1px solid gray;
+
+  &__link {
+    margin-right: var(--space);
+
+    &:last-child {
+      margin-left: 0
+    }
+  }
+}
+
+.link {
+  display: inline-block;
+
+  &--active {
+    font-weight: bold;
+  }
+}
+
+.content {
+  padding: 0 var(--space) var(--space)
+}

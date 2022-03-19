@@ -1,0 +1,14 @@
+<input class="input" *ngIf="!label" #input (input)="handleInputChange(input.value)" [value]="value" [placeholder]="placeholder" />
+
+<label *ngIf="label" [for]="randomId" class="label">
+  {{ label }}:
+
+  <input
+    class="input"
+    #input
+    [id]="randomId"
+    (input)="handleInputChange(input.value)"
+    [value]="value"
+    [placeholder]="placeholder"
+  />
+</label>

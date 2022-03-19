@@ -1,0 +1,32 @@
+.table-wrapper {
+  padding: var(--space) 0;
+
+  &__loading {
+    font-weight: bold;
+  }
+
+  &__pagination {
+    margin-top: calc(var(--space) / 2);
+
+    &__button {
+      margin-right: 3px;
+    }
+
+    &__total {
+      margin-left: calc(var(--space) / 2);
+    }
+  }
+}
+
+::ng-deep {
+  table {
+    border-collapse: collapse;
+  }
+
+  td, th {
+    min-width: 200px;
+    padding: 5px 0;
+    border-bottom: 2px solid gray;
+    text-align: left;
+  }
+}

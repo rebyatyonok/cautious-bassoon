@@ -1,0 +1,66 @@
+<h2>Users</h2>
+
+<div class="controls">
+  <app-labeled-input
+    class="controls__search"
+    [debounce]="true"
+    (valueChange)="handleUserSearch($event)"
+    placeholder="search for users"
+  ></app-labeled-input>
+
+  <button
+    class="controls__button button"
+    (click)="isUserFormOpened = true"
+  >Create new user</button>
+</div>
+
+<app-table-wrapper
+  [isLoading]="isLoading"
+  [isError]="users.length === 0 && !isLoading"
+  [isOk]="users.length > 0 && !isLoading"
+  [currentPage]="currentPage"
+  [total]="total"
+  (changePageEvent)="handlePageChange($event)"
+>
+  <thead table-head>
+    <th></th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Assigned Lessons</th>
+    <th></th>
+  </thead>
+
+  <tbody table-body>
+    <tr *ngFor="let user of users">
+      <td>
+        <img [src]="user.avatar" width="100" height="100" />
+      </td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <span *ngIf="user.learningPlans.length === 0">No assignments</span>
+
+        <button class="button" *ngIf="user.learningPlans.length > 0" (click)="openAssignedLearningsPopup(user)">Show assignments</button>
+      </td>
+      <td>
+        <button class="button" (click)="handleUserDelete(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</app-table-wrapper>
+
+<app-confirmation></app-confirmation>
+
+<app-popup [isOpen]="isUserFormOpened" (close)="isUserFormOpened = false">
+  <app-user-form (submit)="handleUserCreate($event)" (cancel)="isUserFormOpened = false"></app-user-form>
+</app-popup>
+
+<app-popup [isOpen]="isAssignedLearningsPopupOpened" (close)="isAssignedLearningsPopupOpened = false">
+  <div *ngIf="selectedUser">
+    <h3>{{selectedUser.name}} assigned learning </h3>
+
+    <ol class="list">
+      <li *ngFor="let plan of selectedUser.learningPlans">{{ plan.name }}</li>
+    </ol>
+  </div>
+</app-popup>

@@ -1,0 +1,14 @@
+<div class="select">
+  <div class="select__value" (click)="openDropdown()">
+    {{ valueToShow }}
+  </div>
+
+  <ul class="select__dropdown" *ngIf="options.length > 0" [ngClass]="[isDropdownOpened ? 'select__dropdown--active' : '']">
+    <li
+      class="select__dropdown__item"
+      *ngFor="let option of options"
+      (click)="handleOptionClick(option)"
+      [ngClass]="[isSelected(option) ? 'select__dropdown__item--active' : '']"
+    >{{ option.label }}</li>
+  </ul>
+</div>

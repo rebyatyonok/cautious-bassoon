@@ -1,0 +1,8 @@
+<h3>Assign learning plan to users</h3>
+
+<app-select [options]="userOptions" [multiple]="true" [(selectedOptions)]="this.formData.users"></app-select>
+
+<div class="form__actions">
+  <button class="form__actions__accept button" (click)="handleSubmitButtonClick($event)" [disabled]="!isFormDataCorrect">Assign</button>
+  <button class="form__actions__deny button" (click)="handleCancelButtonClick($event)">Cancel</button>
+</div>
